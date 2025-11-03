@@ -38,8 +38,16 @@ export async function setupCounter(
   const interruptButton = options.interruptButton ?? null;
 
   const agent = new RealtimeAgent({
-    name: 'Assistant',
-    instructions: 'You are a helpful assistant focused on realtime voice conversations.',
+    name: 'SJSU BOT',
+    instructions: `You are SJSU's CMPE297 Natural Language Processing course assistant for Fall 2025.
+Focus on questions about course registration, logistics, prerequisites, grading, schedule, technology requirements, or project expectations.
+Key facts:
+- Instructor: Michael Hu. Online via Zoom, Thursdays 5:30–9:30 p.m., Sept 18 – Dec 4 (no class Nov 27).
+- Prereqs: Python (or C/C++/Java/JS), probability, linear algebra, basic neural networks.
+- Grading: Homework 45%, Project Milestone Review 35%. Final project 25%; no exams.
+- Weekly topics progress from NLP basics, embeddings, language models, translation/attention, transformers, LLM techniques, RAG, parsing, fine-tuning, multimodality, ending with final presentations.
+If a student wants to register, confirm eligibility, simulate registration with the provided dummy registration function, then call the dummy confirmation email function and tell the student it was sent.
+Never invent real registrations or send actual emails; clearly state when actions are simulated.`,
     modalities: ['audio', 'text'],
     voice: 'alloy',
   });
@@ -59,6 +67,8 @@ export async function setupCounter(
 
   const interruptLabel =
     interruptButton?.querySelector<HTMLElement>('.interrupt-label') ?? null;
+  const interruptLogo =
+    interruptButton?.querySelector<HTMLImageElement>('.interrupt-logo') ?? null;
   const interruptReady =
     interruptLabel?.dataset.ready ?? interruptButton?.textContent?.trim() ?? 'Interrupt';
   const interruptWaiting =
@@ -87,6 +97,17 @@ export async function setupCounter(
   setButtonState(false);
   setInterruptReady(false);
 
+  if (interruptLogo) {
+    interruptLogo.addEventListener('error', () => {
+      interruptLogo.style.display = 'none';
+      interruptLogo.setAttribute('aria-hidden', 'true');
+      if (interruptLabel) {
+        interruptLabel.style.display = '';
+        interruptLabel.setAttribute('aria-hidden', 'false');
+      }
+    });
+  }
+
   function setInterruptReady(isReady: boolean) {
     if (!interruptButton) {
       return;
@@ -95,8 +116,18 @@ export async function setupCounter(
     interruptButton.classList.toggle('is-ready', isReady);
     if (interruptLabel) {
       interruptLabel.textContent = isReady ? interruptReady : interruptWaiting;
+      interruptLabel.setAttribute('aria-hidden', (!isReady).toString());
+      if (!isReady && interruptLogo && interruptLogo.style.display !== 'none') {
+        interruptLabel.style.display = 'none';
+      } else {
+        interruptLabel.style.display = '';
+      }
     } else {
       interruptButton.textContent = isReady ? interruptReady : interruptWaiting;
+    }
+    if (interruptLogo) {
+      interruptLogo.style.display = isReady ? 'none' : '';
+      interruptLogo.setAttribute('aria-hidden', isReady ? 'true' : 'false');
     }
   }
 
@@ -150,6 +181,7 @@ export async function setupCounter(
       session.mute(true); // start muted until the user holds the button
       button.disabled = false;
       setButtonState(false);
+      setInterruptReady(false);
       console.info('Realtime session connected.');
     } catch (error) {
       console.error('Failed to connect realtime session.', error);

@@ -9,8 +9,8 @@
   <body>
     <div class="app-shell">
       <header class="app-header">
-        <h1>Realtime Voice Demo</h1>
-        <p>Hold the button to talk with the assistant.</p>
+        <h1>SJSU BOT</h1>
+        <p>Your CMPE297 Fall 2025 course assistant.</p>
       </header>
       <div class="button-stage">
         <button id="pushToTalk" class="talk-button" data-state="idle">
@@ -20,7 +20,14 @@
             Hold to Talk
           </span>
         </button>
-        <button id="interruptButton" class="interrupt-button" disabled>
+        <button id="interruptButton" class="interrupt-button" disabled aria-live="polite">
+          <img
+            src="/logo.png"
+            alt="SJSU crest"
+            class="interrupt-logo"
+            decoding="async"
+            loading="lazy"
+          />
           <span class="interrupt-label" data-ready="Interrupt" data-disabled="Waiting">
             Waiting
           </span>
