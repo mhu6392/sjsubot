@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Realtime Voice Demo</title>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="app-header">
+        <h1>Realtime Voice Demo</h1>
+        <p>Hold the button to talk with the assistant.</p>
+      </header>
+      <div class="button-stage">
+        <button id="pushToTalk" class="talk-button" data-state="idle">
+          <span class="button-ring"></span>
+          <span class="button-core"></span>
+          <span class="button-label" data-idle="Hold to Talk" data-active="Listening...">
+            Hold to Talk
+          </span>
+        </button>
+        <button id="interruptButton" class="interrupt-button" disabled>
+          <span class="interrupt-label" data-ready="Interrupt" data-disabled="Waiting">
+            Waiting
+          </span>
+        </button>
+      </div>
+      <section id="transcript" class="transcript"></section>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

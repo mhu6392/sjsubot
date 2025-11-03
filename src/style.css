@@ -1,0 +1,212 @@
+:root {
+  color-scheme: light dark;
+  font-family: 'SF Pro Display', 'SF Pro Text', -apple-system, BlinkMacSystemFont,
+    'Segoe UI', sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at top, #0f172a, #020617);
+  color: #f8fafc;
+}
+
+.app-shell {
+  width: clamp(320px, 65vw, 420px);
+  padding: 2.5rem 2rem 3rem;
+  border-radius: 2.75rem;
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.08), rgba(30, 41, 59, 0.25));
+  backdrop-filter: blur(18px);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 25px 60px rgba(15, 23, 42, 0.55);
+  display: flex;
+  flex-direction: column;
+  gap: 2.25rem;
+  text-align: center;
+}
+
+.app-header h1 {
+  margin: 0 0 0.25rem;
+  font-size: 1.75rem;
+  letter-spacing: 0.02em;
+}
+
+.app-header p {
+  margin: 0;
+  color: rgba(248, 250, 252, 0.7);
+  font-size: 0.95rem;
+}
+
+.button-stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.75rem;
+}
+
+.talk-button {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  outline: none;
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+.talk-button:disabled {
+  cursor: not-allowed;
+  filter: grayscale(0.5);
+}
+
+.talk-button .button-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(96, 165, 250, 0.35), transparent 60%);
+  filter: blur(0);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.talk-button .button-core {
+  position: absolute;
+  inset: 18px;
+  border-radius: 50%;
+  background: linear-gradient(160deg, #38bdf8, #6366f1);
+  box-shadow:
+    0 12px 30px rgba(99, 102, 241, 0.4),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.3);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.talk-button .button-label {
+  position: absolute;
+  inset: auto 0 -60px;
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(248, 250, 252, 0.85);
+  transition: color 0.25s ease;
+}
+
+.talk-button.is-active {
+  transform: scale(1.05);
+}
+
+.talk-button.is-active .button-ring {
+  transform: scale(1.12);
+  opacity: 0.85;
+}
+
+.talk-button.is-active .button-core {
+  transform: scale(1.06);
+  background: linear-gradient(160deg, #f97316, #ef4444);
+  box-shadow:
+    0 16px 40px rgba(239, 68, 68, 0.45),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.45);
+}
+
+.talk-button.is-active .button-label {
+  color: #facc15;
+}
+
+.interrupt-button {
+  position: relative;
+  width: 68px;
+  height: 68px;
+  border-radius: 24px;
+  border: none;
+  background: rgba(248, 250, 252, 0.15);
+  color: rgba(248, 250, 252, 0.85);
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease, transform 0.2s ease;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.25),
+    0 12px 24px rgba(15, 23, 42, 0.45);
+}
+
+.interrupt-button:disabled {
+  cursor: not-allowed;
+  background: rgba(148, 163, 184, 0.25);
+  color: rgba(226, 232, 240, 0.5);
+  box-shadow: inset 0 0 0 1px rgba(148, 163, 184, 0.35);
+}
+
+.interrupt-button.is-ready {
+  background: linear-gradient(160deg, #f87171, #f97316);
+  color: #fff7ed;
+}
+
+.interrupt-button.is-ready:hover {
+  transform: translateY(-2px);
+}
+
+.interrupt-button.is-ready:active {
+  transform: translateY(0);
+}
+
+.transcript {
+  max-height: 220px;
+  overflow-y: auto;
+  padding: 1rem 1.25rem;
+  border-radius: 1.5rem;
+  background: rgba(15, 23, 42, 0.35);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.transcript p {
+  margin: 0;
+  line-height: 1.5;
+  color: rgba(248, 250, 252, 0.9);
+}
+
+@media (max-width: 480px) {
+  .app-shell {
+    width: min(92vw, 360px);
+    padding: 2rem 1.5rem 2.5rem;
+  }
+
+  .talk-button {
+    width: 150px;
+    height: 150px;
+  }
+
+  .talk-button .button-core {
+    inset: 14px;
+  }
+
+  .button-stage {
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .interrupt-button {
+    width: 100%;
+    max-width: 200px;
+    height: 56px;
+  }
+}
