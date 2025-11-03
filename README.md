@@ -1,11 +1,11 @@
-# Realtime Voice Demo
+# SJSU NLP Course Realtime Assistant Demo
 
-This project shows how to set up a browser voice client using `@openai/agents/realtime`. The browser requests a short-lived realtime key from a lightweight Express server. Once connected, holding the push-to-talk button streams your microphone to the realtime model and plays back its audio response.
+This project shows how to set up a browser voice client using `@openai/agents/realtime`. The browser requests a short-lived realtime key from a lightweight Express server. Once connected, holding the push-to-talk button streams your microphone to the realtime model and plays back its audio response. The CMPE297 syllabus information is included as prompt. Tools could be leveraged further. 
 
 ## Prerequisites
 
 - Node.js 18+
-- An OpenAI API key with access to realtime models
+- An OpenAI API key with access to realtime models. The API key could be stored in the .env file under the root directory as we did in the course.
 
 ## Setup
 
@@ -16,8 +16,8 @@ This project shows how to set up a browser voice client using `@openai/agents/re
 2. Create a `.env` file in the project root containing your standard OpenAI API key:
    ```bash
    OPENAI_API_KEY=sk-...
-   # optionally override the realtime model
-   # OPENAI_REALTIME_MODEL=gpt-4o-realtime-preview
+   # Override the realtime model
+   # OPENAI_REALTIME_MODEL=gpt-realtime
    ```
 3. Start the server that mints ephemeral realtime keys:
    ```bash
