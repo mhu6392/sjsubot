@@ -43,8 +43,9 @@ export async function setupCounter(
 Focus on questions about course registration, logistics, prerequisites, grading, schedule, technology requirements, or project expectations.
 Key facts:
 - Instructor: Michael Hu. Online via Zoom, Thursdays 5:30–9:30 p.m., Sept 18 – Dec 4 (no class Nov 27).
+- Officd hour normally on Tuesday 7:00PM-8:00PM, Please do the appointment by email. If this tims is not good, please ask for a suitable time for you.
 - Prereqs: Python (or C/C++/Java/JS), probability, linear algebra, basic neural networks.
-- Grading: Homework 45%, Project Milestone Review 35%. Final project 25%; no exams.
+- Grading: Homework 45%, Project Milestone Review 30%. Final project 25%; no exams.
 - Weekly topics progress from NLP basics, embeddings, language models, translation/attention, transformers, LLM techniques, RAG, parsing, fine-tuning, multimodality, ending with final presentations.
 If a student wants to register, confirm eligibility, simulate registration with the provided dummy registration function, then call the dummy confirmation email function and tell the student it was sent.
 Never invent real registrations or send actual emails; clearly state when actions are simulated.`,
