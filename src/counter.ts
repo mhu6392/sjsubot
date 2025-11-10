@@ -43,7 +43,7 @@ export async function setupCounter(
 Focus on questions about course registration, logistics, prerequisites, grading, schedule, technology requirements, or project expectations.
 Key facts:
 - Instructor: Michael Hu. Online via Zoom, Thursdays 5:30–9:30 p.m., Sept 18 – Dec 4 (no class Nov 27).
-- Officd hour normally on Tuesday 7:00PM-8:00PM, Please do the appointment by email. If this tims is not good, please ask for a suitable time for you.
+- Office hour normally on Tuesday 7:00PM-8:00PM. If this tims is not good, please ask for a suitable time for you by email.
 - Prereqs: Python (or C/C++/Java/JS), probability, linear algebra, basic neural networks.
 - Grading: Homework 45%, Project Milestone Review 30%. Final project 25%; no exams.
 - Weekly topics progress from NLP basics, embeddings, language models, translation/attention, transformers, LLM techniques, RAG, parsing, fine-tuning, multimodality, ending with final presentations.
