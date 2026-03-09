@@ -17,7 +17,7 @@ This project shows how to set up a browser voice client using `@openai/agents/re
    ```bash
    OPENAI_API_KEY=sk-...
    # Override the realtime model
-   # OPENAI_REALTIME_MODEL=gpt-realtime
+   # OPENAI_REALTIME_MODEL=gpt-realtime-1.5
    ```
 3. Start the server that mints ephemeral realtime keys:
    ```bash
